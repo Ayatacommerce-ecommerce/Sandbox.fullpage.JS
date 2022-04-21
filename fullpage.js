@@ -4723,18 +4723,18 @@ setTimeout(() => {
     // get image url for the section with frame index
     const getImageUrl = (section, index) => {
         // empty images for moblie screen
-            if (isMobile){
-                if(
-                    section == 3 ||
-                    section == 6 ||
-                    section == 8 ||
-                    section == 9 ||
-                    section == 12 ||
-                    section == 14
-                ){
-                    return emptyImageUrl;
-                }
+        if (isMobile) {
+            if (
+                section == 3 ||
+                section == 6 ||
+                section == 8 ||
+                section == 9 ||
+                section == 12 ||
+                section == 14
+            ) {
+                return emptyImageUrl;
             }
+        }
         if (
             section < 0 ||
             section == 1 ||
@@ -4884,17 +4884,19 @@ setTimeout(() => {
             navigation: true, // to enable navigation dots
             // load the  fade image in section 5
             afterLoad: (activeSection, element, direction) => {
-                if(element.index == 4){
-                    const img = new Image();
-                    if(isMobile){
-                        img.src = 'https://erryoder.sirv.com/icons/section%204%20mobile%20image.png';
-                    }else{
-                        img.src = 'https://erryoder.sirv.com/icons/sh_040.00015%20(1).png';
+                setTimeout(function () {
+                    if (element.index == 4) {
+                        const img = new Image();
+                        if (isMobile) {
+                            img.src = 'https://erryoder.sirv.com/icons/section%204%20mobile%20image.png';
+                        } else {
+                            img.src = 'https://erryoder.sirv.com/icons/sh_040.00015%20(1).png';
+                        }
+                        img.onload = function () {
+                            context.drawImage(img, 0, 0, canvas.width, canvas.height);
+                        }
                     }
-                    img.onload = function () {
-                        context.drawImage(img, 0, 0, canvas.width, canvas.height);
-                    }
-                }
+                }, 350);
                 // // play the first entry animation of the first section
                 // if (direction == null && activeSection.isFirst) {
                 //     // imagesList is not needed
