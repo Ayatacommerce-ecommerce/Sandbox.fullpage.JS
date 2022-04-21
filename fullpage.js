@@ -4829,16 +4829,10 @@ setTimeout(() => {
 
         var index = 0;
         var interval = setInterval(function () {
+            //work animation if there is valid images, otherwise stop working
             if (index < 30) {
-                // only play the animation if there is a valid image
-                // hide the animationWrapper if no animation
-                if (imagesList[index] == emptyImageUrl) {
-                    canvas.parentNode.style.display = "none";
-                } else {
-                    canvas.parentNode.style.display = "block";
-                    img.src = imagesList[index];
-                }
-            } else if (index > 30) {
+                img.src = imagesList[index];
+            } else {
                 clearInterval(interval);
             }
             index++;
