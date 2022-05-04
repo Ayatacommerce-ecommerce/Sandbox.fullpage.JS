@@ -4937,7 +4937,6 @@ setTimeout(() => {
                 //******* */ Hide heaer on scroll down and show when scroll up *********/
                 var header = $('header')[0];
                 var childHeight = header.firstElementChild.offsetHeight;
-                console.log('header height is ', childHeight);
                 if (direction === "down") {
                     header.style.transitionDuration = ".5s";
                     header.style.transform = "translate3d(0px,-" + childHeight + "px, 0px)";
